@@ -1,0 +1,139 @@
+/* General Settings */
+body {
+    background-color: #1b1b1b;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-top: 50px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #00ffcc;
+    animation: slideDown 1.5s ease;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #b3b3b3;
+    max-width: 600px;
+}
+
+/* Profile picture */
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #00ffcc;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+    transition: transform 0.3s;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+}
+
+/* Social links */
+.social-links {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: #00ffcc;
+    font-size: 1.5em;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-links a:hover {
+    color: #ffffff;
+    transform: scale(1.2);
+}
+
+/* Projects section */
+.projects {
+    max-width: 800px;
+    width: 90%;
+    text-align: left;
+    margin-top: 50px;
+    animation: fadeInUp 1s ease;
+}
+
+.projects h2 {
+    font-size: 2em;
+    color: #00ffcc;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #00ffcc;
+    padding-bottom: 10px;
+}
+
+.project-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    background: #2a2a2a;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, background 0.3s;
+}
+
+.project-item:hover {
+    transform: scale(1.05);
+    background: #3b3b3b;
+}
+
+.project-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+
+.project-description h3 {
+    color: #00ffcc;
+}
+
+.project-description p {
+    color: #b3b3b3;
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background-color: #0f0f0f;
+    margin-top: 50px;
+}
+
+footer p {
+    color: #00ffcc;
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-20px); }
+    to { transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

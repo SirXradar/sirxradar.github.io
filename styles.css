@@ -1,3 +1,4 @@
+/* General Settings */
 body {
     background-color: #1b1b1b;
     color: #ffffff;
@@ -7,11 +8,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
+/* Header */
 header {
     text-align: center;
     margin-top: 50px;
+    padding: 0 20px;
     animation: fadeIn 1.5s ease-in-out;
 }
 
@@ -27,6 +32,7 @@ header p {
     max-width: 600px;
 }
 
+/* Profile picture */
 .profile-pic {
     width: 150px;
     height: 150px;
@@ -37,6 +43,11 @@ header p {
     transition: transform 0.3s;
 }
 
+.profile-pic:hover {
+    transform: scale(1.1);
+}
+
+/* Social links */
 .social-links {
     display: flex;
     gap: 20px;
@@ -49,11 +60,18 @@ header p {
     transition: color 0.3s, transform 0.3s;
 }
 
+.social-links a:hover {
+    color: #ffffff;
+    transform: scale(1.2);
+}
+
+/* Projects section */
 .projects {
     max-width: 800px;
     width: 90%;
     text-align: left;
     margin-top: 50px;
+    padding: 0 20px;
     animation: fadeInUp 1s ease;
 }
 
@@ -66,20 +84,20 @@ header p {
 }
 
 .project-item {
-    position: relative;
-    cursor: pointer;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    margin-bottom: 30px;
     background: #2a2a2a;
     border-radius: 10px;
     padding: 15px;
-    margin-bottom: 20px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, background 0.3s;
 }
 
 .project-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 0px 15px #00ffcc;
+    transform: scale(1.05);
+    background: #3b3b3b;
 }
 
 .project-icon {
@@ -88,21 +106,12 @@ header p {
     margin-right: 20px;
 }
 
-.project-info {
-    flex-grow: 1;
+.project-description h3 {
+    color: #00ffcc;
 }
 
-/* Hidden project description with animation */
-.project-description {
+.project-description p {
     color: #b3b3b3;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease, padding 0.5s ease;
-}
-
-.project-item:hover .project-description {
-    max-height: 100px;
-    padding-top: 10px;
 }
 
 /* Footer */
@@ -118,17 +127,60 @@ footer p {
     color: #00ffcc;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    header p {
+        font-size: 1em;
+    }
+
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+
+    .projects h2 {
+        font-size: 1.5em;
+    }
+
+    .project-item {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .project-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+    }
+
+    footer {
+        padding: 15px;
+    }
 }
 
-@keyframes slideDown {
-    from { transform: translateY(-20px); }
-    to { transform: translateY(0); }
-}
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em;
+    }
 
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+
+    .social-links a {
+        font-size: 1.2em;
+    }
+
+    .projects h2 {
+        font-size: 1.3em;
+    }
+
+    .project-item {
+        padding: 8px;
+    }
 }

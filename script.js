@@ -1,23 +1,25 @@
-// script.js
-function toggleDescription(element) {
-    element.classList.toggle('active');
-    const express = require('express');
-const MinecraftServer = require('minecraft-server-util');
-const app = express();
-
-const SERVER_IP = 'play.minercraftmc.com';
-const SERVER_PORT = 25565;
-
-app.get('/playerCount', async (req, res) => {
+async function fetchPlayerCount(serverId, elementId) {
   try {
-    const status = await MinecraftServer.status(SERVER_IP, SERVER_PORT);
-    res.json({ onlinePlayers: status.players.online });
+      const response = await fetch(`https://api.minetools.eu/ping/${serverId}`);
+      const data = await response.json();
+      
+      if (data.players && data.players.online !== undefined) {
+          document.getElementById(elementId).textContent = `${data.players.online} players online`;
+      } else {
+          document.getElementById(elementId).textContent = 'Server offline';
+      }
   } catch (err) {
-    res.status(500).send('Error fetching player count');
+      console.error('Error fetching player count:', err);
   }
-});
-
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
 }
+
+// Initial fetch and then update every 10 seconds
+function updatePlayerCounts() {
+  fetchPlayerCount('MultiXNetwork_IP', 'playerCountMultiXNetwork');
+  fetchPlayerCount('MinerCraft_IP', 'playerCountMinerCraft');
+}
+
+// Fetch every 10 seconds
+setInterval(updatePlayerCounts, 10000);
+// Initial fetch on page load
+updatePlayerCounts();

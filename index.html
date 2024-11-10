@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SirXradar Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="profile.gif">
 </head>
 <body>
 
@@ -14,11 +16,11 @@
         <h1>Hello, I'm SirXradar</h1>
         <p>I'm 16 years old and have been playing Minecraft for 4 years. I've been a Minecraft developer for 2 years, creating and managing numerous Minecraft servers.</p>
         
-        <!-- Social Links -->
+        <!-- Social Links with Icons -->
         <div class="social-links">
-            <a href="https://discord.com" target="_blank">Discord</a>
-            <a href="https://instagram.com" target="_blank">Instagram</a>
-            <a href="https://telegram.org" target="_blank">Telegram</a>
+            <a href="https://discord.com" target="_blank"><img src="discord-icon.png" alt="Discord"></a>
+            <a href="https://instagram.com" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
+            <a href="https://telegram.org" target="_blank"><img src="telegram-icon.png" alt="Telegram"></a>
         </div>
     </header>
 
@@ -57,28 +59,7 @@
     </footer>
 
     <!-- JavaScript to fetch player count -->
-    <script>
-        async function fetchPlayerCount(serverId, elementId) {
-            try {
-                const response = await fetch(`https://api.example.com/playerCount?server=${serverId}`);
-                const data = await response.json();
-                document.getElementById(elementId).textContent = `${data.onlinePlayers} players online`;
-            } catch (err) {
-                console.error('Error fetching player count:', err);
-            }
-        }
-
-        // Initial fetch and then update every 10 seconds
-        function updatePlayerCounts() {
-            fetchPlayerCount('MultiXNetwork', 'playerCountMultiXNetwork');
-            fetchPlayerCount('MinerCraft', 'playerCountMinerCraft');
-        }
-
-        // Fetch every 10 seconds
-        setInterval(updatePlayerCounts, 10000);
-        // Initial fetch on page load
-        updatePlayerCounts();
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>

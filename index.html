@@ -33,6 +33,7 @@
                 <h3>MultiXNetwork</h3>
                 <div class="project-description">
                     <p>This is the description for MultiXNetwork. It's a project about...</p>
+                    <div id="playerCountMultiXNetwork">Loading player count...</div>
                 </div>
             </div>
         </div>
@@ -44,6 +45,7 @@
                 <h3>MinerCraft</h3>
                 <div class="project-description">
                     <p>This is the description for MinerCraft. It includes...</p>
+                    <div id="playerCountMinerCraft">Loading player count...</div>
                 </div>
             </div>
         </div>
@@ -53,17 +55,23 @@
     <footer>
         <p>© 2024 SirXradar | All rights reserved.</p>
     </footer>
+
     <script>
-        async function fetchPlayerCount() {
-          const response = await fetch('https://your-backend-server-url/playerCount');
-          const data = await response.json();
-          document.getElementById('playerCount').textContent = `${data.onlinePlayers} players online`;
+        // API call function to get player count
+        async function fetchPlayerCount(elementId, serverIp) {
+            try {
+                const response = await fetch(`https://api.mcsrvstat.us/2/${serverIp}`);
+                const data = await response.json();
+                const playerCount = data.players ? data.players.online : 0;
+                document.getElementById(elementId).textContent = `${playerCount} players online`;
+            } catch (error) {
+                document.getElementById(elementId).textContent = "Error loading player count";
+            }
         }
-      
-        fetchPlayerCount();
-      </script>
-      
-      <div id="playerCount">Loading player count...</div>
-      
+
+        // Fetch player count for each project
+        fetchPlayerCount("playerCountMultiXNetwork", "play.multixnetwork.com");
+        fetchPlayerCount("playerCountMinerCraft", "play.minercraftmc.com");
+    </script>
 </body>
 </html>

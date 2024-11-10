@@ -1,3 +1,20 @@
+const introText = "I'm 16 years old and have been playing Minecraft for 6 years. I've been a Minecraft developer for 3 years, creating and managing numerous Minecraft servers.";
+let i = 0;
+
+function typeWriter() {
+    if (i < introText.length) {
+        const span = document.createElement("span");
+        span.textContent = introText.charAt(i);
+        span.classList.add("fade-in");
+        document.getElementById("intro-text").appendChild(span);
+        i++;
+        setTimeout(typeWriter, 60);
+    }
+}
+
+// Run typewriter effect on page load
+window.onload = typeWriter;
+
 async function fetchPlayerCount(serverId, elementId) {
   try {
       const response = await fetch(`https://api.minetools.eu/ping/${serverId}`);

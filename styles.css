@@ -1,4 +1,3 @@
-/* General Settings */
 body {
     background-color: #1b1b1b;
     color: #ffffff;
@@ -8,25 +7,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 100%;
-    overflow-x: hidden;
 }
 
 header {
     text-align: center;
     margin-top: 50px;
-    padding: 0 20px;
-}
-
-header h1 {
-    font-size: 2.5em;
-    color: #00ffcc;
-}
-
-header p {
-    font-size: 1.2em;
-    color: #b3b3b3;
-    max-width: 600px;
 }
 
 .profile-pic {
@@ -35,12 +20,6 @@ header p {
     border-radius: 50%;
     border: 3px solid #00ffcc;
     margin-top: 20px;
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
-    transition: transform 0.3s;
-}
-
-.profile-pic:hover {
-    transform: scale(1.1);
 }
 
 .social-links {
@@ -49,45 +28,25 @@ header p {
     margin-top: 20px;
 }
 
-.social-links a {
-    color: #00ffcc;
-    font-size: 1.5em;
-    transition: color 0.3s, transform 0.3s;
-}
-
-.social-links a:hover {
-    color: #ffffff;
-    transform: scale(1.2);
-}
-
 .projects {
     max-width: 800px;
     width: 90%;
     text-align: left;
     margin-top: 50px;
-    padding: 0 20px;
-}
-
-.projects h2 {
-    font-size: 2em;
-    color: #00ffcc;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #00ffcc;
-    padding-bottom: 10px;
 }
 
 .project-item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    margin-bottom: 30px;
     background: #2a2a2a;
     border-radius: 10px;
     padding: 15px;
-    margin-bottom: 30px;
     transition: transform 0.3s, background 0.3s;
 }
 
 .project-item:hover {
+    transform: scale(1.05);
     background: #3b3b3b;
 }
 
@@ -98,12 +57,12 @@ header p {
 }
 
 .project-info {
-    flex-grow: 1;
+    flex: 1;
     position: relative;
 }
 
 .project-info h3 {
-    font-size: 1.8em;
+    font-size: 1.5em;
     font-weight: bold;
     color: #00ffcc;
 }
@@ -111,14 +70,12 @@ header p {
 .player-count {
     font-size: 1em;
     color: #00ffcc;
-    margin-right: 10px;
-    text-align: right;
 }
 
 .project-description {
     display: none;
     color: #b3b3b3;
-    margin-top: 10px;
+    font-size: 0.9em;
 }
 
 .project-item:hover .project-description {

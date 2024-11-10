@@ -85,7 +85,6 @@ header p {
 
 .project-item {
     display: flex;
-    flex-direction: column;
     align-items: center;
     margin-bottom: 30px;
     background: #2a2a2a;
@@ -106,12 +105,19 @@ header p {
     margin-right: 20px;
 }
 
-.project-description h3 {
+.project-info h3 {
     color: #00ffcc;
 }
 
 .project-description p {
     color: #b3b3b3;
+}
+
+/* Player count */
+.player-count {
+    font-size: 0.9em;
+    color: #00ffcc;
+    margin-top: 10px;
 }
 
 /* Footer */
@@ -125,62 +131,4 @@ footer {
 
 footer p {
     color: #00ffcc;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2em;
-    }
-
-    header p {
-        font-size: 1em;
-    }
-
-    .profile-pic {
-        width: 120px;
-        height: 120px;
-    }
-
-    .projects h2 {
-        font-size: 1.5em;
-    }
-
-    .project-item {
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    .project-icon {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 10px;
-    }
-
-    footer {
-        padding: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 1.8em;
-    }
-
-    .profile-pic {
-        width: 100px;
-        height: 100px;
-    }
-
-    .social-links a {
-        font-size: 1.2em;
-    }
-
-    .projects h2 {
-        font-size: 1.3em;
-    }
-
-    .project-item {
-        padding: 8px;
-    }
 }

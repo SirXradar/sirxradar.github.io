@@ -12,18 +12,15 @@ body {
     overflow-x: hidden;
 }
 
-/* Header */
 header {
     text-align: center;
     margin-top: 50px;
     padding: 0 20px;
-    animation: fadeIn 1.5s ease-in-out;
 }
 
 header h1 {
     font-size: 2.5em;
     color: #00ffcc;
-    animation: slideDown 1.5s ease;
 }
 
 header p {
@@ -32,7 +29,6 @@ header p {
     max-width: 600px;
 }
 
-/* Profile picture */
 .profile-pic {
     width: 150px;
     height: 150px;
@@ -47,7 +43,6 @@ header p {
     transform: scale(1.1);
 }
 
-/* Social links */
 .social-links {
     display: flex;
     gap: 20px;
@@ -65,14 +60,12 @@ header p {
     transform: scale(1.2);
 }
 
-/* Projects section */
 .projects {
     max-width: 800px;
     width: 90%;
     text-align: left;
     margin-top: 50px;
     padding: 0 20px;
-    animation: fadeInUp 1s ease;
 }
 
 .projects h2 {
@@ -86,16 +79,15 @@ header p {
 .project-item {
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
+    justify-content: space-between;
     background: #2a2a2a;
     border-radius: 10px;
     padding: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
     transition: transform 0.3s, background 0.3s;
 }
 
 .project-item:hover {
-    transform: scale(1.05);
     background: #3b3b3b;
 }
 
@@ -105,30 +97,30 @@ header p {
     margin-right: 20px;
 }
 
+.project-info {
+    flex-grow: 1;
+    position: relative;
+}
+
 .project-info h3 {
+    font-size: 1.8em;
+    font-weight: bold;
     color: #00ffcc;
 }
 
-.project-description p {
-    color: #b3b3b3;
-}
-
-/* Player count */
 .player-count {
-    font-size: 0.9em;
+    font-size: 1em;
     color: #00ffcc;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.project-description {
+    display: none;
+    color: #b3b3b3;
     margin-top: 10px;
 }
 
-/* Footer */
-footer {
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-    background-color: #0f0f0f;
-    margin-top: 50px;
-}
-
-footer p {
-    color: #00ffcc;
+.project-item:hover .project-description {
+    display: block;
 }

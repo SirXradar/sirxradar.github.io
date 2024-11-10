@@ -16,7 +16,7 @@ async function fetchPlayerCount(serverId, elementId) {
 // Initial fetch and then update every 10 seconds
 function updatePlayerCounts() {
   fetchPlayerCount('MultiXNetwork_IP', 'playerCountMultiXNetwork');
-  fetchPlayerCount('MinerCraft_IP', 'playerCountMinerCraft');
+  fetchPlayerCount('play.minercraftmc.com', 'playerCountMinerCraft');
 }
 
 // Fetch every 10 seconds

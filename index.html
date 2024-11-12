@@ -1,63 +1,102 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SirXradar</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="profile.gif" type="image/gif">
+    <title>SirXradar | Portfolio</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <meta property="og:title" content="sirxradar.github.io" />
+    <meta property="og:description" content="Xradarr1400 Bio Website!" />
+    <meta property="og:url" content="https://sirxradar.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SirXradar" />
+    <script disable-devtool-auto src="./js/devtools.js" defer></script>
+    <script 
+        disable-devtool-auto
+        src="./js/devtools.js" defer
+        disable-menu="true"
+        clear-log="true"
+        disable-select="true"
+        disable-copy="true"
+        disable-cut="true"
+        disable-paste="true"></script>
+    <link rel="icon" href="./image/profile.gif" type="image/gif">
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/svg.js"></script>
+    <script src="./js/particles.min.js"></script>
+    <script src="./js/typed.js"></script>
 </head>
 <body>
+    <!-- Particles.js Container -->
+    <div id="particles-js">
+        <div class="particles-blur-overlay"></div>
+    </div>
+    
+    <!-- Main Content with Glassmorphism -->
+    <div class="content-wrapper">
+        <!-- Header Section -->
+        <header>
+            <div class="profile-container">
+                <img src="./image/profile.gif" alt="Profile Picture" class="profile-pic">
+                <div class="glow-effect"></div>
+            </div>
+            <h1 class="animate-title">Hello, I'm SirXradar</h1>
+            <div class="typed-container">
+                <span id="typed-text"></span>
+            </div>
+            
+            <!-- Social Links -->
+            <div class="social-links" style="user-select: none; -webkit-user-drag: none;">
+                <a href="https://discord.com" target="_blank" class="social-icon">
+                    <img src="./image/discord-icon.png" alt="Discord">
+                </a>
+                <a href="https://instagram.com" target="_blank" class="social-icon">
+                    <img src="./image/instagram-icon.png" alt="Instagram">
+                </a>
+                <a href="https://t.me/AmirrezaXR" target="_blank" class="social-icon">
+                    <img src="./image/telegram-icon.png" alt="Telegram">
+                </a>
+            </div>
+        </header>
 
-    <!-- Header Section -->
-    <header>
-        <img src="profile.gif" alt="Profile Picture" class="profile-pic">
-        <h1>Hello, I'm SirXradar</h1>
-        <p id="intro-text"></p>
-        
-        <!-- Social Links -->
-        <div class="social-links">
-            <a href="https://discord.com" target="_blank"><img src="discord-icon.png" alt="Discord"></a>
-            <a href="https://instagram.com" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
-            <a href="https://t.me/AmirrezaXR" target="_blank"><img src="telegram-icon.png" alt="Telegram"></a>
+        <!-- Projects Section -->
+        <div class="projects">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <img src="./image/multixnetwork.jpg" alt="MultiXNetwork" class="project-icon" style="pointer-events: none; user-select: none; -webkit-user-drag: none;">
+                        <div class="project-info">
+                            <h3>MultiXNetwork</h3>
+                            <p class="player-count" id="playerCountMultiXNetwork">Loading...</p>
+                            <p class="project-description">This server now unavailable</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <img src="./image/minercraft.png" alt="MinerCraft" class="project-icon" style="pointer-events: none; user-select: none; -webkit-user-drag: none;">
+                        <div class="project-info">
+                            <h3>MinerCraft</h3>
+                            <p class="player-count" id="playerCountMinerCraft">Loading...</p>
+                            <p class="project-description">Play.MinerCraftMc.Com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </header>
 
-    <!-- Projects Section -->
-    <div class="projects">
-        <h2>Projects</h2>
-
-        <!-- Project 1 -->
-        <div class="project-item">
-            <img src="multixnetwork.jpg" alt="Project 1 Icon" class="project-icon">
-            <div class="project-info">
-                <h3>MultiXNetwork</h3>
-                <p class="player-count" id="playerCountMultiXNetwork">0 players online</p>
-            </div>
-            <div class="project-description">
-                <p>This server now unavailable</p>
-            </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="project-item">
-            <img src="minercraft.png" alt="Project 2 Icon" class="project-icon">
-            <div class="project-info">
-                <h3>MinerCraft</h3>
-                <p class="player-count" id="playerCountMinerCraft">0 players online</p>
-            </div>
-            <div class="project-description">
-                <p>Play.MinerCraftMc.Com</p>
-            </div>
-        </div>
+        <!-- Footer Section -->
+        <footer>
+            <p>© 2024 SirXradar | All rights reserved.</p>
+        </footer>
     </div>
 
-    <!-- Footer Section -->
-    <footer>
-        <p>© 2024 SirXradar | All rights reserved.</p>
-    </footer>
-
-    <!-- JavaScript for player count and typewriter effect -->
-    <script src="script.js"></script>
+    <!-- Custom JS -->
+    <script src="./js/common.js"></script>
 </body>
 </html>

@@ -306,7 +306,7 @@ header {
     text-align: center;
     font-size: 2.5rem;
     color: var(--primary-color);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .projects-grid {

@@ -62,7 +62,86 @@
     background: rgba(255, 51, 102, 0.5);
 }
 
-
+/* بخش اصلی استایل‌ها */
+.skills {
+    text-align: center;
+    margin: 20px;
+    font-family: Arial, sans-serif;
+    color: white;
+  }
+  
+  .skill-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  
+  /* استایل کارت‌ها */
+  .skill {
+    background-color: #3b3a37;
+    padding: 15px 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .skill i,
+  .skill img {
+    font-size: 24px;
+    height: 24px;
+    width: 24px;
+    color: #fc1681;
+    transition: transform 0.3s ease;
+  }
+  
+  /* انیمیشن هاور */
+  .skill:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    background-color: #364774;
+  }
+  
+  .skill:hover i,
+  .skill:hover img {
+    transform: rotate(20deg);
+    color: #2fe1e7;
+  }
+  
+  .skill img {
+    filter: invert(100%);
+  }
+  
+/* استایل برای باکس Skills */
+.skills-box {
+    background: rgba(255, 255, 255, 0.1); /* پس‌زمینه نیمه‌شفاف سفید */
+    backdrop-filter: blur(10px); /* مات کردن پس‌زمینه */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    max-width: 90%;
+    margin: 0 auto;
+    transform: translateY(20px); /* جابجایی کمی پایین برای شروع انیمیشن */
+    opacity: 0; /* مخفی کردن باکس در ابتدا */
+    animation: fadeInUp 1s forwards; /* انیمیشن انیمیشن ورود */
+    overflow: hidden; /* مخفی کردن هر چیزی که از باکس بیرون می‌زند */
+  }
+  
+  /* انیمیشن ورود باکس */
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
 * {
     scrollbar-width: thin;
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
@@ -218,7 +297,9 @@ header {
 }
 
 .projects {
-    margin-top: 4rem;
+    margin-top: 1rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
 }
 
 .section-title {
@@ -231,7 +312,7 @@ header {
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 1.5rem;
     padding: 1rem;
 }
 
@@ -248,7 +329,7 @@ header {
 }
 
 .project-content {
-    padding: 1.5rem;
+    padding: 1rem;
 }
 
 .project-icon {
@@ -260,8 +341,8 @@ header {
 
 .project-info h3 {
     color: var(--primary-color);
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    margin-bottom: 0.1rem;
 }
 
 .player-count {

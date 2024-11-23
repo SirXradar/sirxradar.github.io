@@ -90,7 +90,7 @@ $(document).ready(function() {
     }
 
     function updatePlayerCounts() {
-        fetchPlayerCount('MultiXNetwork_IP', 'playerCountMultiXNetwork');
+        fetchPlayerCount('45.81.18.53:25565', 'playerCountMultiXNetwork');
         fetchPlayerCount('play.minercraftmc.com', 'playerCountMinerCraft');
     }
 

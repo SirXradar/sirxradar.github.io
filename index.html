@@ -14,7 +14,15 @@
         }
         
         .hero-gradient {
-            background: linear-gradient(45deg, #000000 0%, #0a0a2e 50%, #1a1a4a 100%);
+            background: linear-gradient(135deg, #000000 0%, #0f172a 50%, #1e293b 100%);
+            background-size: 200% 200%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         .minecraft-text {
@@ -32,8 +40,35 @@
         }
         
         .pixel-border {
-            border: 3px solid #2b6cb0;
-            box-shadow: 8px 8px 0 rgba(43, 108, 176, 0.3);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #3b82f6;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .pixel-border::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(59, 130, 246, 0) 0%,
+                rgba(59, 130, 246, 0) 45%,
+                rgba(59, 130, 246, 0.5) 50%,
+                rgba(59, 130, 246, 0) 55%,
+                rgba(59, 130, 246, 0) 100%
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
         }
         
         .progress-bar {
@@ -47,11 +82,15 @@
         /* Server Card Styles */
         .server-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
         }
         
         .server-card:hover {
-            transform: translateY(-5px) rotateZ(1deg);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.5);
         }
         
         .online-dot {
@@ -59,74 +98,242 @@
         }
         
         @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
+            0% { opacity: 0.6; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0.6; transform: scale(0.95); }
+        }
+        
+        /* Particle Background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: rgba(59, 130, 246, 0.5);
+            border-radius: 50%;
+            animation: float-particle linear infinite;
+        }
+        
+        @keyframes float-particle {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+        
+        /* Glow Effect */
+        .glow {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
+        }
+        
+        /* Typewriter Effect */
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 3px solid #3b82f6;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #3b82f6 }
+        }
+        
+        /* Minecraft Block Hover Effect */
+        .block-hover {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .block-hover:hover {
+            transform: perspective(1000px) rotateX(10deg) rotateY(10deg) scale(1.05);
+            box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Glass Morphism */
+        .glass {
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        /* Minecraft Creeper Pattern */
+        .creeper-bg {
+            background-image: 
+                linear-gradient(#0f172a 2px, transparent 2px),
+                linear-gradient(90deg, #0f172a 2px, transparent 2px),
+                linear-gradient(#1e293b 1px, transparent 1px),
+                linear-gradient(90deg, #1e293b 1px, transparent 1px);
+            background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+            background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+        }
+
+        /* IP Address Fix */
+        .ip-address {
+            word-break: break-all;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-content {
+                text-align: center;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .server-card {
+                margin-bottom: 1.5rem;
+            }
         }
     </style>
 </head>
-<body class="bg-[#0a0a0a] text-gray-100">
+<body class="bg-[#0a0a0a] text-gray-100 overflow-x-hidden">
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+
     <!-- Hero Section -->
-    <section class="hero-gradient min-h-screen relative overflow-hidden">
-        <div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-10 md:mb-0">
-                <h1 class="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-                    SirXRadar
+    <section class="hero-gradient min-h-screen relative overflow-hidden flex items-center">
+        <div class="absolute inset-0 bg-black/30 z-0"></div>
+        <div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center relative z-10">
+            <div class="md:w-1/2 mb-10 md:mb-0 hero-content">
+                <h1 class="text-5xl md:text-7xl font-bold mb-4">
+                    <span class="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent glow">SirXRadar</span>
                 </h1>
                 <h2 class="text-2xl md:text-3xl mb-6 minecraft-text">
-                    <span class="typewriter">Frontend Wizard </span>🧙♂️ | <span class="typewriter">Minecraft Dev </span>⛏️
+                    <span>Frontend Wizard </span>🧙♂️ | <span>Minecraft Dev </span>⛏️
                 </h2>
-                <div class="flex space-x-4">
-                    <a href="#projects" class="pixel-border px-8 py-3 bg-blue-600 hover:bg-blue-700 transition-colors duration-300">
-                        View Projects
+                <p class="text-lg text-gray-300 mb-8 max-w-lg">
+                    Crafting immersive web experiences by day, building Minecraft worlds by night. 
+                    Passionate about creating digital magic that blends creativity with technology.
+                </p>
+                <div class="flex flex-wrap gap-4 hero-buttons">
+                    <a href="#minecraft-creations" class="pixel-border px-8 py-3 bg-blue-600 hover:bg-blue-700 transition-all duration-300 relative overflow-hidden group">
+                        <span class="relative z-10">View Projects</span>
+                        <span class="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                     </a>
-                    <a href="#contact" class="pixel-border px-8 py-3 bg-transparent hover:bg-blue-900/30 transition-colors duration-300">
-                        Contact Me
+                    <a href="#contact" class="pixel-border px-8 py-3 bg-transparent hover:bg-blue-900/30 transition-all duration-300 relative overflow-hidden group">
+                        <span class="relative z-10">Contact</span>
+                        <span class="absolute inset-0 bg-gradient-to-r from-blue-900/30 to-blue-800/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    </a>
+                </div>
+                
+                <!-- Social Icons -->
+                <div class="flex mt-8 space-x-4 justify-center md:justify-start">
+                    <a href="https://discord.gg/uF5VJrQGsu" target="_blank" class="social-icon w-12 h-12 rounded-full bg-gray-900 flex items-center justify-center hover:bg-blue-600 transition-all duration-300 hover:transform hover:scale-110 hover:rotate-12">
+                        <i class="fab fa-discord text-xl"></i>
+                    </a>
+                    <a href="https://github.com/sirxradar" target="_blank" class="social-icon w-12 h-12 rounded-full bg-gray-900 flex items-center justify-center hover:bg-gray-700 transition-all duration-300 hover:transform hover:scale-110 hover:-rotate-12">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://instagram.com/xradarr1400" target="_blank" class="social-icon w-12 h-12 rounded-full bg-gray-900 flex items-center justify-center hover:bg-pink-600 transition-all duration-300 hover:transform hover:scale-110 hover:rotate-12">
+                        <i class="fab fa-instagram text-xl"></i>
                     </a>
                 </div>
             </div>
-            <div class="md:w-1/2 flex justify-center">
-                <img src="profile.jpg" alt="Avatar" 
-                     class="floating rounded-full w-64 h-64 md:w-96 md:h-96 border-4 border-blue-500 object-cover">
+            <div class="md:w-1/2 flex justify-center relative mt-10 md:mt-0">
+                <div class="relative">
+                    <img src="profile.jpg" alt="Avatar" 
+                         class="floating rounded-full w-64 h-64 md:w-96 md:h-96 border-4 border-blue-500 object-cover z-10 relative block-hover">
+                    <div class="absolute -inset-4 bg-blue-500 rounded-full blur-xl opacity-20 z-0"></div>
+                    <div class="absolute -inset-2 bg-blue-400 rounded-full blur-md opacity-30 z-0 animate-pulse"></div>
+                </div>
             </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#skills" class="text-blue-400 text-2xl">
+                <i class="fas fa-chevron-down"></i>
+            </a>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section class="py-20 bg-black/50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold mb-16 text-center">Dev Skills XP</h2>
+    <section class="py-20 bg-black/50 relative overflow-hidden" id="skills">
+        <div class="absolute inset-0 bg-[url('https://www.minecraft.net/content/dam/minecraft/touchup-2020/minecraft-background-behavior-1800x1013.jpg')] bg-cover bg-center opacity-10"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Dev Skills XP</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Mastering the tools and technologies that bring digital creations to life</p>
+            </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <!-- Frontend Mastery -->
-    <div class="skill-card p-6 bg-gray-900 rounded-lg hover:transform hover:scale-105 transition-all duration-300">
-        <div class="skill-icon mb-4 text-blue-400 text-4xl">⚡</div>
-        <h3 class="text-xl font-bold mb-3">Frontend Mastery</h3>
-        <div class="h-2 bg-gray-800 rounded-full mb-3">
-            <div class="progress-bar h-2 bg-blue-500 rounded-full w-[95%]"></div>
-        </div>
-        <p class="text-gray-400">React, Vue, Tailwind, Three.js</p>
-    </div>
+                <!-- Frontend Mastery -->
+                <div class="skill-card p-8 glass rounded-xl hover:transform hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20">
+                    <div class="skill-icon mb-6 text-blue-400 text-5xl flex justify-center">
+                        <div class="floating">⚡</div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center">Frontend Mastery</h3>
+                    <div class="h-3 bg-gray-800 rounded-full mb-4 overflow-hidden">
+                        <div class="progress-bar h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full w-[95%]"></div>
+                    </div>
+                    <p class="text-gray-400 text-center mb-4">React, Vue, Tailwind, Three.js, GSAP</p>
+                    <div class="flex flex-wrap justify-center gap-2 mt-4">
+                        <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm">Responsive Design</span>
+                        <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm">Animation</span>
+                        <span class="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm">UI/UX</span>
+                    </div>
+                </div>
 
-    <!-- Java & Minecraft Development -->
-    <div class="skill-card p-6 bg-gray-900 rounded-lg hover:transform hover:scale-105 transition-all duration-300">
-        <div class="skill-icon mb-4 text-green-400 text-4xl">🖥️</div>
-        <h3 class="text-xl font-bold mb-3">Java & Minecraft Development</h3>
-        <div class="h-2 bg-gray-800 rounded-full mb-3">
-            <div class="progress-bar h-2 bg-green-500 rounded-full w-[90%]"></div>
-        </div>
-        <p class="text-gray-400">Java, Spigot, Paper, Plugin Dev</p>
-    </div>
-</div>
+                <!-- Java & Minecraft Development -->
+                <div class="skill-card p-8 glass rounded-xl hover:transform hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/20">
+                    <div class="skill-icon mb-6 text-green-400 text-5xl flex justify-center">
+                        <div class="floating">🖥️</div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center">Minecraft Development</h3>
+                    <div class="h-3 bg-gray-800 rounded-full mb-4 overflow-hidden">
+                        <div class="progress-bar h-full bg-gradient-to-r from-green-500 to-green-600 rounded-full w-[90%]"></div>
+                    </div>
+                    <p class="text-gray-400 text-center mb-4">Proxy, Spigot, Paper, Optimization</p>
+                    <div class="flex flex-wrap justify-center gap-2 mt-4">
+                        <span class="px-3 py-1 bg-green-900/50 text-green-300 rounded-full text-sm">Server Management</span>
+                        <span class="px-3 py-1 bg-green-900/50 text-green-300 rounded-full text-sm">Plugin Configuring</span>
+                        <span class="px-3 py-1 bg-green-900/50 text-green-300 rounded-full text-sm">Performance</span>
+                    </div>
+                </div>
 
-                <!-- Add more skill cards -->
+                <!-- Backend & DevOps -->
+                <div class="skill-card p-8 glass rounded-xl hover:transform hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
+                    <div class="skill-icon mb-6 text-purple-400 text-5xl flex justify-center">
+                        <div class="floating">🔧</div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center">Backend & DevOps</h3>
+                    <div class="h-3 bg-gray-800 rounded-full mb-4 overflow-hidden">
+                        <div class="progress-bar h-full bg-gradient-to-r from-purple-500 to-purple-600 rounded-full w-[85%]"></div>
+                    </div>
+                    <p class="text-gray-400 text-center mb-4">Node.js, Express, MongoDB, Docker</p>
+                    <div class="flex flex-wrap justify-center gap-2 mt-4">
+                        <span class="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-sm">API Design</span>
+                        <span class="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-sm">Database</span>
+                        <span class="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-sm">Deployment</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-
     <!-- Minecraft Section -->
-    <section class="py-20 bg-[#0f172a]" id="minecraft-creations">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold mb-16 text-center">Minecraft Creations</h2>
+    <section class="py-20 creeper-bg relative overflow-hidden" id="minecraft-creations">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Minecraft Servers</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Explore the Minecraft servers I've developed and contributed to</p>
+            </div>
             
             <!-- Server List -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="server-list">
@@ -135,51 +342,104 @@
 
             <!-- Loading State -->
             <div id="loading" class="text-center py-8">
-                <p class="text-blue-400 animate-pulse">Loading server data... ⛏️</p>
+                <div class="inline-block">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 bg-blue-400 rounded-full animate-bounce"></div>
+                        <div class="w-3 h-3 bg-blue-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                        <div class="w-3 h-3 bg-blue-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+                    </div>
+                    <p class="mt-4 text-blue-400">Loading server data... ⛏️</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black py-8" id="contact">
-        <div class="container mx-auto px-6 text-center">
-            <div class="flex justify-center space-x-6 mb-4">
-			
-			<a href="https://discord.gg/uF5VJrQGsu" target="_blank" class="text-blue-500 hover:text-blue-400 text-2xl transition-transform transform hover:scale-110">
-            <i class="fab fa-discord"></i>
-            </a>
-                <a href="https://github.com/sirxradar" target="_blank" class="text-blue-500 hover:text-orange-400 text-2xl transition-transform transform hover:scale-110">
-                    <i class="fab fa-github"></i>
-                </a>
-                <!-- Add more social links -->
-				<a href="https://instagram.com/xradarr1400" target="_blank" class="text-blue-500 hover:text-pink-400 text-2xl transition-transform transform hover:scale-110">
-            <i class="fab fa-instagram"></i>
-        </a>
+    <footer class="bg-black/80 py-12 backdrop-blur-md" id="contact">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">xRadar</h3>
+                    <p class="text-gray-500 mt-2">Crafting digital experiences with passion</p>
+                </div>
+                
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="https://discord.gg/uF5VJrQGsu" target="_blank" class="text-blue-400 hover:text-blue-300 text-2xl transition-all duration-300 hover:scale-110">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="https://github.com/sirxradar" target="_blank" class="text-blue-400 hover:text-gray-300 text-2xl transition-all duration-300 hover:scale-110">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://instagram.com/xradarr1400" target="_blank" class="text-blue-400 hover:text-pink-400 text-2xl transition-all duration-300 hover:scale-110">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-gray-500">© 2025 SirXradar. All rights reserved.</p>
+                    <p class="text-gray-600 text-sm mt-1">Made with 💙 and 🪓 in Minecraft</p>
+                </div>
             </div>
-            <p class="text-gray-500">Crafted with 💙 and 🪓 in Minecraft</p>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white opacity-0 invisible transition-all duration-300 hover:bg-blue-700 shadow-lg z-50">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
 <script>
+// Create particles
+function createParticles() {
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 50;
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random position
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100 + 100; // Start below viewport
+        
+        // Random size
+        const size = Math.random() * 3 + 1;
+        
+        // Random animation duration
+        const duration = Math.random() * 20 + 10;
+        const delay = Math.random() * 5;
+        
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.animationDuration = `${duration}s`;
+        particle.style.animationDelay = `${delay}s`;
+        
+        particlesContainer.appendChild(particle);
+    }
+}
+
 // Minecraft Servers Configuration
 const SERVERS = [
     {
         name: "[PARTNER] MultiXNetwork",
         ip: "Play.Multixnetwork.iR",
-        image: "mxn.jpg"
+        image: "mxn.jpg",
+        description: "The ultimate Minecraft network with minigames, survival, and custom features."
     },
     {
         name: "HiddenComplex",
         ip: "Mc.HiddenComplex.Com",
-        image: "hidden.jpg"
+        image: "hidden.jpg",
+        description: "An exclusive survival server with custom terrain and economy system."
     },
-	{
+    {
         name: "MineHeaven",
         ip: "Mc.MineHeaven.iR",
-        image: "mineheaven.jpg"
-    },
-    // Add more servers like this:
-    // {name: "Server Name", ip: "server.ip.here", image: "image-url.jpg"}
+        image: "mineheaven.jpg",
+        description: "A peaceful survival experience with quality-of-life plugins and friendly."
+    }
 ];
 
 async function fetchServerData(ip) {
@@ -193,90 +453,171 @@ async function fetchServerData(ip) {
 
 function createServerCard(serverInfo, data) {
     const card = document.createElement('div');
-    card.className = 'server-card bg-gray-900 rounded-lg overflow-hidden hover:shadow-xl';
+    card.className = 'server-card rounded-xl overflow-hidden hover:shadow-xl transition-all duration-500';
+    
+    // Default server image if none provided
+    const serverImage = serverInfo.image || 'https://via.placeholder.com/400x200';
+    
     card.innerHTML = `
-        <div class="relative">
-            <img src="${serverInfo.image}" class="w-full h-48 object-cover">
-            <div class="absolute top-2 right-2 flex items-center bg-black/80 px-3 py-1 rounded-full">
-                <span class="online-dot w-3 h-3 rounded-full ${data.online ? 'bg-green-500' : 'bg-red-500'}"></span>
-                <span class="ml-2 text-sm">${data.online ? 'Online' : 'Offline'}</span>
+        <div class="relative h-48 overflow-hidden">
+            <img src="${serverImage}" alt="${serverInfo.name}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-black/80 rounded-full text-sm font-medium ${data.online ? 'text-green-400' : 'text-red-400'}">
+                    ${data.online ? 'Online' : 'Offline'}
+                </span>
+            </div>
+            <div class="absolute bottom-4 left-4">
+                <h3 class="text-xl font-bold">${serverInfo.name}</h3>
             </div>
         </div>
         
         <div class="p-6">
-            <h3 class="text-xl font-bold mb-2">${serverInfo.name}</h3>
+            <p class="text-gray-400 mb-4">${serverInfo.description || 'A Minecraft server with custom features and plugins.'}</p>
             
-            <div class="space-y-2 mb-4">
-                <p class="text-sm">
-                    <span class="text-blue-400">Players:</span> 
-                    ${data.online ? `${data.players.online}/${data.players.max}` : 'Offline'}
-                </p>
-                <p class="text-sm">
-                    <span class="text-blue-400">IP:</span> 
-                    <span class="copyable cursor-pointer hover:text-blue-300" data-ip="${serverInfo.ip}">${serverInfo.ip}</span>
-                </p>
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div>
+                    <p class="text-sm text-gray-500">Status</p>
+                    <p class="font-medium ${data.online ? 'text-green-400' : 'text-red-400'}">
+                        ${data.online ? 'Online' : 'Offline'}
+                    </p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">Players</p>
+                    <p class="font-medium">
+                        ${data.online ? `${data.players.online}/${data.players.max}` : '0/0'}
+                    </p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">Version</p>
+                    <p class="font-medium">${data.version || 'N/A'}</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">IP Address</p>
+                    <p class="text-xs copyable cursor-pointer hover:text-blue-300 transition-colors ip-address" data-ip="${serverInfo.ip}">
+                        ${serverInfo.ip}
+                    </p>
+                </div>
             </div>
-
-            <button class="more-btn w-full py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
-                More Info
-            </button>
-
-            <div class="additional-info hidden mt-4 pt-4 border-t border-gray-800">
-                <p class="text-sm"><span class="text-blue-400">Version:</span> ${data.version || 'N/A'}</p>
-                <p class="text-sm"><span class="text-blue-400">Software:</span> ${data.software || 'Unknown'}</p>
-                ${data.online ? `
-                    <div class="mt-4">
-                        <a href="minecraft://${serverInfo.ip}" 
-                           class="inline-block w-full px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg">
-                            Join Server
-                        </a>
+            
+            <div class="flex flex-col space-y-3">
+                <button class="more-btn w-full py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors flex items-center justify-center">
+                    <span>Server Details</span>
+                    <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                </button>
+                
+                <div class="additional-info hidden space-y-4 pt-4 border-t border-gray-800">
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Software</p>
+                        <p class="text-sm">${data.software || 'Unknown'}</p>
                     </div>
-                ` : ''}
+                    
+                    ${data.online ? `
+                        <a href="minecraft://${serverInfo.ip}" 
+                           class="block w-full px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg text-center transition-colors">
+                            Join Server Now
+                        </a>
+                    ` : ''}
+                </div>
             </div>
         </div>
     `;
     return card;
 }
 
-// Event Listeners
-document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('more-btn')) {
-        const card = e.target.closest('.server-card');
-        const info = card.querySelector('.additional-info');
-        info.classList.toggle('hidden');
-        e.target.textContent = info.classList.contains('hidden') ? 'More Info' : 'Less Info';
-    }
+// Back to Top Button
+function setupBackToTop() {
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopButton.classList.remove('opacity-100', 'visible');
+            backToTopButton.classList.add('opacity-0', 'invisible');
+        }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
 
-    if (e.target.classList.contains('copyable')) {
-        navigator.clipboard.writeText(e.target.dataset.ip);
-        alert('IP copied to clipboard! 📋');
-    }
-});
-
-// Initialize Servers
+// Initialize everything when DOM is loaded
 window.addEventListener('DOMContentLoaded', async () => {
+    // Create particles
+    createParticles();
+    
+    // Initialize Servers
     const serverList = document.getElementById('server-list');
     const loading = document.getElementById('loading');
-
-    for (const server of SERVERS) {
-        const data = await fetchServerData(server.ip);
-        serverList.appendChild(createServerCard(server, data));
+    
+    if (serverList && loading) {
+        for (const server of SERVERS) {
+            const data = await fetchServerData(server.ip);
+            serverList.appendChild(createServerCard(server, data));
+        }
+        
+        loading.remove();
     }
-
-    loading.remove();
+    
+    // Set up back to top button
+    setupBackToTop();
+    
+    // Auto-refresh server status every 2 minutes
+    setInterval(async () => {
+        const serverCards = document.querySelectorAll('.server-card');
+        
+        for (let i = 0; i < serverCards.length; i++) {
+            const server = SERVERS[i];
+            const data = await fetchServerData(server.ip);
+            const newCard = createServerCard(server, data);
+            serverCards[i].replaceWith(newCard);
+        }
+    }, 120000);
 });
 
-// Auto-refresh every 2 minutes
-setInterval(async () => {
-    const serverCards = document.querySelectorAll('.server-card');
-    
-    for (let i = 0; i < serverCards.length; i++) {
-        const server = SERVERS[i];
-        const data = await fetchServerData(server.ip);
-        const newCard = createServerCard(server, data);
-        serverCards[i].replaceWith(newCard);
+// Event Listeners
+document.addEventListener('click', (e) => {
+    // Server card toggle
+    if (e.target.classList.contains('more-btn') || e.target.closest('.more-btn')) {
+        const button = e.target.classList.contains('more-btn') ? e.target : e.target.closest('.more-btn');
+        const card = button.closest('.server-card');
+        const info = card.querySelector('.additional-info');
+        const icon = button.querySelector('i');
+        
+        info.classList.toggle('hidden');
+        button.querySelector('span').textContent = info.classList.contains('hidden') ? 'Server Details' : 'Less Details';
+        
+        if (icon) {
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
     }
-}, 120000);
+    
+    // IP copy
+    if (e.target.classList.contains('copyable')) {
+        navigator.clipboard.writeText(e.target.dataset.ip);
+        
+        // Show copied tooltip
+        const tooltip = document.createElement('div');
+        tooltip.className = 'fixed py-1 px-3 bg-blue-600 text-white rounded-lg text-sm';
+        tooltip.textContent = 'Copied!';
+        tooltip.style.top = `${e.target.getBoundingClientRect().top - 30}px`;
+        tooltip.style.left = `${e.target.getBoundingClientRect().left}px`;
+        document.body.appendChild(tooltip);
+        
+        // Remove tooltip after 1.5 seconds
+        setTimeout(() => {
+            tooltip.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+            setTimeout(() => tooltip.remove(), 300);
+        }, 1500);
+    }
+});
 </script>
 </body>
 </html>
